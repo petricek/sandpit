@@ -8,7 +8,7 @@ import java.io.IOException;
 import static com.google.common.base.Preconditions.checkArgument;
 
 
-public class GuavaExperiment {
+public class TryPrecondition {
     private int count;
     private String str;
     public int increment()
