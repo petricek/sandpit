@@ -13,7 +13,7 @@ import java.io.*;
  */
 public class TryVWProtos {
 
-    private static VWExample promptForExample(BufferedReader bufferedReader, PrintStream out)
+    private static VWExample createExample(BufferedReader bufferedReader, PrintStream out)
     {
 
         VWExample.Builder example = VWProtos.VWExample.newBuilder();
@@ -33,8 +33,17 @@ public class TryVWProtos {
                 .addNamespace(
                         namespace.setId('a').addFeature(feature.setName("QUALITY").setValue(0.3f).build()).build()
                 )
+                .addNamespace(
+                        namespace.setId('b').addFeature(feature.setName("QUANTITY").setValue(0.9f).build()).build()
+                )
                 .build();
 
+    }
+
+    static void Print(Cache cache) {
+        for (VWExample example: cache.getExampleList()) {
+            System.out.println("Example: " + example.toString());
+        }
     }
 
     public static void main(String[] args) throws Exception {
@@ -43,24 +52,31 @@ public class TryVWProtos {
             System.exit(-1);
         }
 
-        Cache.Builder Cache = VWProtos.Cache.newBuilder();
+        Cache.Builder CacheBuilder = VWProtos.Cache.newBuilder();
 
-        // Read the existing address book.
         try {
-            Cache.mergeFrom(new FileInputStream(args[0]));
+            Cache Cache = VWProtos.Cache.parseFrom(new FileInputStream(args[0]));
+            Print(Cache);
+        } catch (FileNotFoundException e) {
+            System.out.println(args[0] + ": File not found. Not printing.");
+        }
+
+            // Read the existing address book.
+        try {
+            CacheBuilder.mergeFrom(new FileInputStream(args[0]));
         } catch (FileNotFoundException e) {
             System.out.println(args[0] + ": File not found.  Creating a new file.");
         }
-        for(int i = 0; i < 1000000 ; i++) {
+        for(int i = 0; i < 10 ; i++) {
             // Add an address.
-            Cache.addExample(
-                    promptForExample(new BufferedReader(new InputStreamReader(System.in)),
+            CacheBuilder.addExample(
+                    createExample(new BufferedReader(new InputStreamReader(System.in)),
                             System.out)
             );
         }
         // Write the new address book back to disk.
         FileOutputStream output = new FileOutputStream(args[0]);
-        Cache.build().writeTo(output);
+        CacheBuilder.build().writeTo(output);
         output.close();
     }
 
