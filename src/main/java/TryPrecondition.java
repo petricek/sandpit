@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import static com.google.common.base.Preconditions.checkArgument;
 
 
-public class GuavaExperiment implements Runnable{
+public class TryPrecondition {
     private int count;
     private String str;
     public int increment()
