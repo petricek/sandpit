@@ -51,7 +51,7 @@ class Runner implements Runnable{
     {
         Runtime rt = Runtime.getRuntime();
         try {
-            Process ps = rt.exec("sleep 3");
+            Process ps = rt.exec("sleep 20");
             BufferedReader stdInput = new BufferedReader(new
                     InputStreamReader(ps.getInputStream()));
 
