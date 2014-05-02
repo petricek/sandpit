@@ -43,18 +43,18 @@ public class GuavaExperimentTest {
     }
 
     @Test
-    public void testAddPositive()
-    {
+    public void testAddPositive() {
         TryPrecondition tester = new TryPrecondition();
 
-        Assert.assertEquals(tester.addPositive(5),0);
-        Assert.assertEquals(tester.addPositive(5),5);
+        Assert.assertEquals(tester.addPositive(5), 0);
+        Assert.assertEquals(tester.addPositive(5), 5);
         //Assert.assertEquals(tester.addPositive(-5),5);
+    }
 
     @Test
     public void testRun()
     {
-        GuavaExperiment tester = new GuavaExperiment();
+        Runner tester = new Runner();
 
         tester.run();
     }

@@ -1,11 +1,9 @@
-import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Created by petricek on 4/29/14.
@@ -27,7 +25,7 @@ public class TryGuavaStrings {
                 .omitEmptyStrings()
                 .split(",,,323,,23,23,32,,,,"));
 
-        System.out.println(CharMatcher.(Pattern.compile("\r?\n")).replaceFrom("yaha", "oo"));
+        //System.out.println(CharMatcher.(Pattern.compile("\r?\n")).replaceFrom("yaha", "oo"));
 
     }
 }
