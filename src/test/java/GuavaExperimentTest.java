@@ -2,6 +2,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Assert;
 import org.junit.Test;
+import voldemort.client.ClientConfig;
+import voldemort.client.SocketStoreClientFactory;
+import voldemort.client.StoreClient;
+import voldemort.client.StoreClientFactory;
+import voldemort.versioning.Versioned;
+
 
 /**
  * Created by vpetricek on 4/11/14.
@@ -43,7 +49,30 @@ public class GuavaExperimentTest {
 
         Assert.assertEquals(tester.addPositive(5),0);
         Assert.assertEquals(tester.addPositive(5),5);
-        Assert.assertEquals(tester.addPositive(-5),5);
+        //Assert.assertEquals(tester.addPositive(-5),5);
+    }
+
+    @Test
+    public void testRun()
+    {
+        GuavaExperiment tester = new GuavaExperiment();
+
+        tester.run();
+    }
+
+    @Test
+    public void testVoldy()
+    {
+        String bootstrapUrl = "tcp://localhost:6666";
+        StoreClientFactory factory = new SocketStoreClientFactory(new ClientConfig().setBootstrapUrls(bootstrapUrl));
+
+        // create a client that executes operations on a single store
+        StoreClient client = factory.getStoreClient("test");
+
+        // do some random pointless operations
+        Versioned<String> value = client.get("hey");
+        client.put("some_key", "wohoo");
+
     }
 
 }
