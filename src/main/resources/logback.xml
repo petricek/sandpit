@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.lordofthejars.foo" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <!-- Strictly speaking, the level attribute is not necessary since -->
+    <!-- the level of the root level is set to DEBUG by default.       -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
+
+
+<!--<configuration>-->
+
+    <!--<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
+        <!--&lt;!&ndash; encoders are assigned the type-->
+             <!--ch.qos.logback.classic.encoder.PatternLayoutEncoder by default &ndash;&gt;-->
+        <!--<encoder>-->
+            <!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+    <!--&lt;!&ndash;<appender name="SYSLOG" class="ch.qos.logback.core.SyslogAppender">&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; encoders are assigned the type&ndash;&gt;-->
+             <!--&lt;!&ndash;ch.qos.logback.classic.encoder.PatternLayoutEncoder by default &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<encoder>&ndash;&gt;-->
+            <!--&lt;!&ndash;<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>&ndash;&gt;-->
+        <!--&lt;!&ndash;</encoder>&ndash;&gt;-->
+    <!--&lt;!&ndash;</appender>&ndash;&gt;-->
+
+    <!--<appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">-->
+        <!--<syslogHost>remote_home</syslogHost>-->
+        <!--<facility>AUTH</facility>-->
+        <!--<suffixPattern>[%thread] %logger %msg</suffixPattern>-->
+    <!--</appender>-->
+
+
+    <!--<logger name="chapters.configuration" level="INFO"/>-->
+
+    <!--&lt;!&ndash; Strictly speaking, the level attribute is not necessary since &ndash;&gt;-->
+    <!--&lt;!&ndash; the level of the root level is set to DEBUG by default.       &ndash;&gt;-->
+    <!--<root level="ALL">-->
+        <!--<appender-ref ref="SYSLOG" />-->
+    <!--</root>-->
+
+<!--</configuration>-->

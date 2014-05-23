@@ -8,6 +8,9 @@ import org.junit.Test;
 //import voldemort.client.StoreClientFactory;
 //import voldemort.versioning.Versioned;
 
+import com.google.common.base.Preconditions;
+import com.example.tutorial;
+
 
 /**
  * Created by vpetricek on 4/11/14.
